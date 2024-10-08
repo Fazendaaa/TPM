@@ -1,0 +1,30 @@
+http:
+  services:
+    ventoy:
+      loadBalancer:
+        servers:
+          - url: "http://192.168.1.149:8081/"
+
+  routers:
+    traefik:
+      rule: "Host(`traefik.ser.localdomain`)"
+      service: "api@internal"
+      tls:
+        domains:
+          - main: "ser.localdomain"
+            sans:
+              - "*.ser.localdomain"
+
+    ventoy:
+      rule: "Host(`ventoy.ser.localdomain`)"
+      service: "ventoy"
+      tls:
+        domains:
+          - main: "ser.localdomain"
+            sans:
+              - "*.ser.localdomain"
+
+tls:
+  certificates:
+    - certFile: "/etc/certs/local-cert.pem"
+      keyFile: "/etc/certs/local-key.pem"

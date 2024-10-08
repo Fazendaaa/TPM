@@ -1,0 +1,52 @@
+# mkcert -cert-file ./certs/local-cert.pem -key-file ./certs/local-key.pem "ser.localdomain" "*.ser.localdomain"
+# https://github.com/pi-hole/docker-pi-hole/blob/master/examples/docker-compose.yml.example
+# https://discourse.pi-hole.net/t/docker-unable-to-bind-to-port-53/45082/8
+version: "3.3"
+
+services:
+  tpm:
+    build: .
+
+  pihole:
+    image: pihole/pihole:2024.07.0
+    container_name: pihole
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+      - 80:80/tcp
+    environment:
+      - TZ='America/Sao_Paulo'
+      - WEBTHEME='default-darker'
+      - WEBPASSWORD='admin'
+    volumes:
+      - ${PWD}/pihole/etc-pihole:/etc/pihole
+      - ${PWD}/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+
+  whoami:
+    image: traefik/whoami
+    container_name: whoami
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.whoami.tls=true"
+      - "traefik.http.routers.whoami.rule=Host(`whoami.myhouse.localdomain`)"
+
+  traefik:
+    image: traefik:v3.1
+    container_name: traefik
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - 80:80
+      - 443:443
+      - 8080:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ${PWD}/certs:/etc/certs:ro
+      - ${PWD}/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
+      - ${PWD}/traefik/config.yml:/etc/traefik/config.yml:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.traefik=true"
