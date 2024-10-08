@@ -6,6 +6,12 @@ version: "3.3"
 services:
   tpm:
     build: .
+    environment:
+      - IPSERVER=
+      - DOMAIN='myhouse.localdomain'
+    volumes:
+      - ${PWD}/pihole/etc-pihole/:/etc/pihole/ # 05-pihole-custom-cname.conf
+      - ${PWD}/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/ # custom.list
 
   pihole:
     image: pihole/pihole:2024.07.0
@@ -22,8 +28,12 @@ services:
       - WEBTHEME='default-darker'
       - WEBPASSWORD='admin'
     volumes:
-      - ${PWD}/pihole/etc-pihole:/etc/pihole
-      - ${PWD}/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+      - ${PWD}/pihole/etc-pihole/:/etc/pihole/
+      - ${PWD}/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.pihole.tls=true"
+      - "traefik.http.routers.pihole.rule=Host(`pihole.myhouse.localdomain`)"
 
   whoami:
     image: traefik/whoami
