@@ -1,11 +1,24 @@
-FROM golang:1.22-alpine AS base
+FROM golang:1.23.1-alpine3.20 AS base
 
 WORKDIR /usr/src/
 
+RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/ mkcert=1.4.4-r14
 
-FROM alpine:1.22 AS runner
+COPY go.mod .
+COPY *.go .
+
+RUN go build -o tpm
+
+#FROM scratch AS runner
+FROM alpine:3.20 AS runner
 
 WORKDIR /app/
 
-RUN apk install mkcert
+COPY --from=base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+COPY --from=base /usr/bin/mkcert /usr/bin/mkcert
+COPY --from=base /usr/src/tpm /usr/local/bin/tpm
 
+COPY entrypoint.sh .
+RUN chmod +x entrypoint.sh
+ENTRYPOINT [ "./entrypoint.sh" ]
+#ENTRYPOINT [ "/usr/local/bin/tpm" ]
