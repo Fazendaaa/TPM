@@ -3,7 +3,7 @@
 Traefik Proxy Manager: alterative to Nginx Proxy Manager to expose systems
 
 <div align = "center">
-  <img src="./img/logo.svg" height=300>
+  <img src="./img/logo.svg" height=470>
 </div>
 
 - [TPM](#tpm)
