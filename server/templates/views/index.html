@@ -1,12 +1,10 @@
 {{ define "views/index.html"}}
-<!--index.html-->
 
-<!--Embed the header.html template at this location-->
 {{ template "layouts/header.html" .}}
 
-{{ template "homepage/master_header.html" .}}
+{{ template "homepage/add_sub_domains.html" .}}
+{{ template "homepage/list_sub_domains.html" .}}
 
-<!--Embed the footer.html template at this location-->
 {{ template "layouts/footer.html" .}}
 
 {{ end }}

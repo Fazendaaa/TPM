@@ -6,14 +6,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Router(r *gin.Engine) {
-	r.GET("/", index)
-}
-
-func index(c *gin.Context) {
+func settings(c *gin.Context) {
 	c.HTML(
 		http.StatusOK,
-		"views/index.html",
+		"views/settings.html",
 		gin.H{
 			"title": "TPM",
 		},

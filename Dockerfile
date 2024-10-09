@@ -4,6 +4,7 @@ WORKDIR /usr/src/
 
 RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/ mkcert=1.4.4-r14
 
+COPY img/ img/
 COPY go.sum .
 COPY go.mod .
 
@@ -24,6 +25,7 @@ WORKDIR /app/
 
 COPY --from=base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=base /usr/bin/mkcert /usr/bin/mkcert
+COPY --from=base /usr/src/img/ /app/img/
 COPY --from=base /usr/src/server/static /app/server/static
 COPY --from=base /usr/src/server/templates /app/server/templates
 COPY --from=base /usr/src/tpm /usr/local/bin/tpm

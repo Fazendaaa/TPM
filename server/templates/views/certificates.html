@@ -1,0 +1,10 @@
+{{ define "views/certificates.html"}}
+
+{{ template "layouts/header.html" .}}
+
+{{ template "certificate/generate_certificate.html" .}}
+{{ template "certificate/list_certificate.html" .}}
+
+{{ template "layouts/footer.html" .}}
+
+{{ end }}

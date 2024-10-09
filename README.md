@@ -52,6 +52,7 @@ docker-compose up --build
 
 ## TODO
 
+- Manage multiple domains -- currently the system supports only one but you can always deploy a dashboard to each one to "make it work"
 - Add PiHole's API support to avoid using files -- this is a troublesome quest due to [lack of documentation](https://discourse.pi-hole.net/t/how-to-use-the-api/61004/9)
 - Also add [Traefik's API](https://doc.traefik.io/traefik/operations/api/) support
 - Add auto renew certificates
@@ -75,3 +76,4 @@ docker-compose up --build
 - [Bootstrap 5 Tutorial](https://www.w3schools.com/bootstrap5/index.php)
 - [Golang HTML Template With Bootstrap Theme](https://www.geeksbeginner.com/golang-web-development-with-template-and-gin-framework/)
 - [Docker Health Check: A Practical Guide](https://lumigo.io/container-monitoring/docker-health-check-a-practical-guide/)
+- [How to convert a square SVG to all-size ICO?](https://graphicdesign.stackexchange.com/questions/77359/how-to-convert-a-square-svg-to-all-size-ico)

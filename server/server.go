@@ -17,7 +17,7 @@ func Server() {
 	r.Static("/images", "./server/static/src/assets/images")
 	r.Static("/scss", "./server/static/src/assets/scss")
 	r.Static("/js", "./server/static/src/assets/js")
-	r.StaticFile("/favicon.ico", "./server/static/src/assets/images/favicon/favicon.ico")
+	r.StaticFile("/favicon.ico", "./img/icon.ico")
 	r.Static("/vendor", "./server/static/vendor")
 
 	r.LoadHTMLGlob("./server/templates/**/*")
