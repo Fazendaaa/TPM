@@ -33,6 +33,7 @@ RUN chmod +x entrypoint.sh
 
 EXPOSE 8080
 
-#HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+HEALTHCHECK --interval=30s --timeout=3s --retries=3 --start-interval=10s \
+  CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 ENTRYPOINT [ "./entrypoint.sh" ]
 #ENTRYPOINT [ "/usr/local/bin/tpm" ]

@@ -16,12 +16,6 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.tpm.tls=true"
       - "traefik.http.routers.tpm.rule=Host(`tpm.myhouse.localhost`)"
-    healthcheck:
-      test: wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
-      interval: 30s
-      retries: 5
-      start_period: 10s
-      timeout: 3s
 
   pihole:
     image: pihole/pihole:2024.07.0

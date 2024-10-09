@@ -74,3 +74,4 @@ docker-compose up --build
 - [golang-standards/project-layout](https://github.com/golang-standards/project-layout)
 - [Bootstrap 5 Tutorial](https://www.w3schools.com/bootstrap5/index.php)
 - [Golang HTML Template With Bootstrap Theme](https://www.geeksbeginner.com/golang-web-development-with-template-and-gin-framework/)
+- [Docker Health Check: A Practical Guide](https://lumigo.io/container-monitoring/docker-health-check-a-practical-guide/)
