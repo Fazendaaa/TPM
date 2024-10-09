@@ -7,16 +7,30 @@
 </div>
 
 - [TPM](#tpm)
-  - [Idea](#idea)
+  - [Background](#background)
+    - [Idea](#idea)
+    - [Opinionated project](#opinionated-project)
   - [Usage](#usage)
     - [Running locally](#running-locally)
   - [TODO](#todo)
   - [Troubleshooting](#troubleshooting)
   - [References](#references)
 
-## Idea
+## Background
+
+> This is not a production ready project! Please be careful in how and where you use it.
+
+You **WON'T NEED** any internet access to generate certificates to last **THREE YEARS** in your local network since this project uses [mkcert](https://github.com/FiloSottile/mkcert) to handle that. The main idea is to provide a easy and automate service using a dashboard to handle all the minor details.
+
+### Idea
 
 After deploying [CasaOS](https://casaos.zimaspace.com/) the idea to use **Nginx Proxy Manager (NPM)** to handle all my domains and certificates came to mind, even tho being a simple quest and having a plethora of tutorials about it at my disposal the challenge to do the same using Traefik seemed interesting. The perception was that it would be too difficult but it was very simple especially because Traefik's docs were impeccable; then the next logical step was to automate the whole process and generate a service to handle it all.
+
+### Opinionated project
+
+- _"Why Go?"_ **Because I'm bad at it**
+- _"Why Bootstrap?"_ **Because I never used before**
+- _"Why PiHole?"_ **Because, at the moment, is what I'm currently using**
 
 ## Usage
 
@@ -34,7 +48,12 @@ docker-compose up --build
 
 ## TODO
 
-- Improve support to handle different scenarios and providers
+- Add PiHole's API support to avoid using files -- this is a troublesome quest due to [lack of documentation](https://discourse.pi-hole.net/t/how-to-use-the-api/61004/9)
+- Also add [Traefik's API](https://doc.traefik.io/traefik/operations/api/) support
+- Add auto renew certificates
+- Let's Encrypt support
+- Improve support to handle different DNS Server providers
+- Add docs to cover all macro use cases
 - Make it more beautiful
 - Add stats
 
@@ -48,3 +67,6 @@ docker-compose up --build
 - [Developing Go Apps With Docker](https://www.docker.com/blog/developing-go-apps-docker/)
 - [Standard Go Project Layout](https://github.com/golang-standards/project-layout)
 - [Is Your Container Image Really Distroless?](https://www.docker.com/blog/is-your-container-image-really-distroless/)
+- [golang-standards/project-layout](https://github.com/golang-standards/project-layout)
+- [Bootstrap 5 Tutorial](https://www.w3schools.com/bootstrap5/index.php)
+- [Golang HTML Template With Bootstrap Theme](https://www.geeksbeginner.com/golang-web-development-with-template-and-gin-framework/)
