@@ -30,3 +30,6 @@ go.work.sum
 # pihole files
 pihole/etc-dnsmasq.d/
 pihole/etc-pihole/
+
+# binary
+tpm

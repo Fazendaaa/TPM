@@ -30,7 +30,7 @@ After deploying [CasaOS](https://casaos.zimaspace.com/) the idea to use **Nginx 
 
 - _"Why Go?"_ **Because I'm bad at it**
 - _"Why Bootstrap?"_ **Because I never used before**
-- _"Why PiHole?"_ **Because, at the moment, is what I'm currently using**
+- _"Why PiHole?"_ **Because, at the moment, it is what I'm currently using**
 
 ## Usage
 
@@ -45,6 +45,10 @@ You will need to install [Docker](https://www.docker.com/) and [Docker-compose](
 ```shell
 docker-compose up --build
 ```
+
+2. Then open https://tpm.myhouse.localhost/
+3. Accept the warning mentioning about the not valid certificate
+4. Go to Certificate tab then install the generated certificate
 
 ## TODO
 

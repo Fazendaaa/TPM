@@ -3,6 +3,7 @@ version: "3.3"
 services:
   tpm:
     build: .
+    container_name: tpm
     environment:
       - IPSERVER=0.0.0.0 # type here your machine network address, something like: 192.168.1.16
       - DOMAIN=myhouse.localhost
@@ -11,6 +12,16 @@ services:
       - ${PWD}/certs:/etc/certs
       - ${PWD}/pihole/etc-pihole/:/etc/pihole/ # 05-pihole-custom-cname.conf
       - ${PWD}/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/ # custom.list
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.tpm.tls=true"
+      - "traefik.http.routers.tpm.rule=Host(`tpm.myhouse.localhost`)"
+    healthcheck:
+      test: wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
+      interval: 30s
+      retries: 5
+      start_period: 10s
+      timeout: 3s
 
   pihole:
     image: pihole/pihole:2024.07.0
@@ -61,4 +72,4 @@ services:
       - "traefik.http.routers.traefik=true"
     depends_on:
       tpm:
-        condition: service_completed_successfully
+        condition: service_healthy

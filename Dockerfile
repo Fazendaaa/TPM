@@ -4,15 +4,17 @@ WORKDIR /usr/src/
 
 RUN apk add --no-cache --repository=http://dl-cdn.alpinelinux.org/alpine/edge/testing/ mkcert=1.4.4-r14
 
+COPY go.sum .
 COPY go.mod .
 
 # RUN go mod download
 
 COPY main.go .
 
-#COPY tpm/ tpm/
+COPY internal/ internal/
+COPY server/ server/
 
-RUN go test -v
+#RUN go test -v
 RUN go build -o tpm
 
 #FROM scratch AS runner
@@ -22,6 +24,8 @@ WORKDIR /app/
 
 COPY --from=base /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 COPY --from=base /usr/bin/mkcert /usr/bin/mkcert
+COPY --from=base /usr/src/server/static /app/server/static
+COPY --from=base /usr/src/server/templates /app/server/templates
 COPY --from=base /usr/src/tpm /usr/local/bin/tpm
 
 COPY entrypoint.sh .
@@ -29,5 +33,6 @@ RUN chmod +x entrypoint.sh
 
 EXPOSE 8080
 
+#HEALTHCHECK --interval=30s --timeout=3s CMD wget --no-verbose --tries=1 --spider http://localhost:8080/ || exit 1
 ENTRYPOINT [ "./entrypoint.sh" ]
 #ENTRYPOINT [ "/usr/local/bin/tpm" ]
