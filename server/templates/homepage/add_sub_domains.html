@@ -1,17 +1,22 @@
 {{ define "homepage/add_sub_domains.html" }}
 
 <div class="container pt-5 mt-3">
-  <h2>Register here your new local domain:</h2>
+  <h2>Register here your new sub local domain:</h2>
   <form>
     <div class="row">
       <div class="col">
-        <input type="text" class="form-control" placeholder="Enter port" name="pswd">
+        <input type="text" class="form-control" placeholder="Enter port" name="port">
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Select domain" name="pswd">
+        <input type="text" class="form-control" placeholder="Select domain" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" name="domain">
+        <ul class="dropdown-menu">
+          <li>Link 1</li>
+          <li>Link 2</li>
+          <li>Link 3</li>
+        </ul>
       </div>
       <div class="col">
-        <input type="text" class="form-control" placeholder="Enter subdomain" name="email">
+        <input type="text" class="form-control" placeholder="Enter subdomain name" name="subdomain">
       </div>
       <div class="col">
         <button type="button" class="btn btn-success">Add</button>

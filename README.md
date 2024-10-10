@@ -46,12 +46,13 @@ You will need to install [Docker](https://www.docker.com/) and [Docker-compose](
 docker-compose up --build
 ```
 
-2. Then open https://tpm.myhouse.localhost/
+2. Wait about 30s then open https://tpm.myhouse.localhost/
 3. Accept the warning mentioning about the not valid certificate
 4. Go to Certificate tab then install the generated certificate
 
 ## TODO
 
+- Find a way to make install certificate button works
 - Manage multiple domains -- currently the system supports only one but you can always deploy a dashboard to each one to "make it work"
 - Add PiHole's API support to avoid using files -- this is a troublesome quest due to [lack of documentation](https://discourse.pi-hole.net/t/how-to-use-the-api/61004/9)
 - Also add [Traefik's API](https://doc.traefik.io/traefik/operations/api/) support
