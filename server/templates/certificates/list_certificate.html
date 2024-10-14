@@ -2,27 +2,29 @@
 
 <div class="container mt-3">
   <h2>Listed registered certificate:</h2>
-  <table class="table table-dark table-striped">
-    <thead>
-      <tr>
-        <th>IP</th>
-        <th>Domain</th>
-        <th>Options</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><a href="http://192.168.0.999:123/" target="_blank">http://192.168.0.999:123/</a></td>
-        <td><a href="https://foo.bar.localdomain/" target="_blank">https://foo.bar.localdomain/</a></td>
-        <td>
-          <button type="button" class="btn btn-warning" disabled>Install</button>
-          <button type="button" class="btn btn-success">Download</button>
-          <button type="button" class="btn btn-primary">Renew</button>
-          <button type="button" class="btn btn-danger">Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th>IP</th>
+          <th>Domain</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="http://192.168.0.999:123/" target="_blank">http://192.168.0.999:123/</a></td>
+          <td><a href="https://foo.bar.localdomain/" target="_blank">https://foo.bar.localdomain/</a></td>
+          <td>
+            <button type="button" class="btn btn-warning" disabled>Install</button>
+            <button type="button" class="btn btn-success">Download</button>
+            <button type="button" class="btn btn-primary">Renew</button>
+            <button type="button" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
 
 {{ end }}
