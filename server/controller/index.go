@@ -3,6 +3,7 @@ package controller
 import (
 	"net/http"
 
+	Domains "github.com/Fazendaaa/tpm/internal/domains"
 	"github.com/gin-gonic/gin"
 )
 
@@ -11,7 +12,8 @@ func index(c *gin.Context) {
 		http.StatusOK,
 		"views/index.html",
 		gin.H{
-			"title": "TPM",
+			"title":   "TPM",
+			"domains": Domains.SubdomainTest,
 		},
 	)
 }

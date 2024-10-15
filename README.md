@@ -78,3 +78,6 @@ docker-compose up --build
 - [Golang HTML Template With Bootstrap Theme](https://www.geeksbeginner.com/golang-web-development-with-template-and-gin-framework/)
 - [Docker Health Check: A Practical Guide](https://lumigo.io/container-monitoring/docker-health-check-a-practical-guide/)
 - [How to convert a square SVG to all-size ICO?](https://graphicdesign.stackexchange.com/questions/77359/how-to-convert-a-square-svg-to-all-size-ico)
+- [Tutorial: Developing a RESTful API with Go and Gin](https://go.dev/doc/tutorial/web-service-gin)
+- [Writing Web Applications](https://go.dev/doc/articles/wiki/)
+- [Organizing a Go module](https://go.dev/doc/modules/layout)
