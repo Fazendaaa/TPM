@@ -14,8 +14,8 @@
       <tbody>
         {{ range .subdomains }}
           {{ $domains := .Domain }}
-          {{ $iped := (print "http://" $domains.IP ":" .Port "/" ) }}
-          {{ $named := (print "https://" .Name "." $domains.Name "/" ) }}
+          {{ $iped := (print "http://" $domains.IP ":" .Port "/") }}
+          {{ $named := (print "https://" .Name "." $domains.Name "/") }}
           <tr>
             <td><a href="{{ $iped }}" target="_blank">{{ $iped }}</a></td>
             <td><a href="{{ $named }}" target="_blank">{{ $named }}</a></td>
