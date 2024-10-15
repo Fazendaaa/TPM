@@ -13,10 +13,12 @@
       </thead>
       <tbody>
         {{ range .subdomains }}
-        {{ $domains := .Domain }}
+          {{ $domains := .Domain }}
+          {{ $iped := (print "http://" $domains.IP ":" .Port "/" ) }}
+          {{ $named := (print "https://" .Name "." $domains.Name "/" ) }}
           <tr>
-            <td><a href="http://{{ $domains.IP }}:{{ .Port }}/" target="_blank">http://{{ $domains.IP }}:{{ .Port }}/</a></td>
-            <td><a href="https://{{ .Name }}.{{ $domains.Name }}/" target="_blank">https://{{ .Name }}.{{ $domains.Name }}/</a></td>
+            <td><a href="{{ $iped }}" target="_blank">{{ $iped }}</a></td>
+            <td><a href="{{ $named }}" target="_blank">{{ $named }}</a></td>
             <td>
               <button type="button" class="btn btn-primary">Edit</button>
               <button type="button" class="btn btn-danger">Delete</button>
