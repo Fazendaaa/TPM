@@ -15,7 +15,7 @@
         {{ range .subdomains }}
         {{ $domains := .Domain }}
           <tr>
-            <td><a href="https://{{ $domains.IP }}:{{ .Port }}/" target="_blank">https://{{ $domains.IP }}:{{ .Port }}/</a></td>
+            <td><a href="http://{{ $domains.IP }}:{{ .Port }}/" target="_blank">http://{{ $domains.IP }}:{{ .Port }}/</a></td>
             <td><a href="https://{{ .Name }}.{{ $domains.Name }}/" target="_blank">https://{{ .Name }}.{{ $domains.Name }}/</a></td>
             <td>
               <button type="button" class="btn btn-primary">Edit</button>
