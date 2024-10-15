@@ -81,3 +81,4 @@ docker-compose up --build
 - [Tutorial: Developing a RESTful API with Go and Gin](https://go.dev/doc/tutorial/web-service-gin)
 - [Writing Web Applications](https://go.dev/doc/articles/wiki/)
 - [Organizing a Go module](https://go.dev/doc/modules/layout)
+- [How To Use Templates in Go](https://www.digitalocean.com/community/tutorials/how-to-use-templates-in-go)

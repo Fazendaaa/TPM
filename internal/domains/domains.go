@@ -1,14 +1,14 @@
 package domains
 
 type domain struct {
-	IP   string `form:"ip"`
-	Name string `form:"name"`
+	IP   string `json:"ip"`
+	Name string `json:"name"`
 }
 
 type subdomain struct {
-	Port   int    `form:"port"`
-	Name   string `form:"name"`
-	Domain domain `form:"domain"`
+	Port   int    `json:"port"`
+	Name   string `json:"name"`
+	Domain domain `json:"domain"`
 }
 
 var DomainTest = []domain{

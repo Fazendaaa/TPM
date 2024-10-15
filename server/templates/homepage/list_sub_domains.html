@@ -1,8 +1,7 @@
 {{ define "homepage/list_sub_domains.html" }}
 
 <div class="container mt-3">
-  <h2>Listed registered domains:</h2>
-  <pre>{{ .domains }}</pre>
+  <h2>Listed registered subdomains:</h2>
   <div class="table-responsive">
     <table class="table table-hover table-dark table-striped">
       <thead>
@@ -13,30 +12,17 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td><a href="http://192.168.0.999:123/" target="_blank">http://192.168.0.999:123/</a></td>
-          <td><a href="https://foo.bar.localdomain/" target="_blank">https://foo.bar.localdomain/</a></td>
-          <td>
-            <button type="button" class="btn btn-primary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="http://192.168.0.999:123/" target="_blank">http://192.168.0.999:123/</a></td>
-          <td><a href="https://foo.bar.localdomain/" target="_blank">https://foo.bar.localdomain/</a></td>
-          <td>
-            <button type="button" class="btn btn-primary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td><a href="http://192.168.0.999:123/" target="_blank">http://192.168.0.999:123/</a></td>
-          <td><a href="https://foo.bar.localdomain/" target="_blank">https://foo.bar.localdomain/</a></td>
-          <td>
-            <button type="button" class="btn btn-primary">Edit</button>
-            <button type="button" class="btn btn-danger">Delete</button>
-          </td>
-        </tr>
+        {{ range .subdomains }}
+        {{ $domains := .Domain }}
+          <tr>
+            <td><a href="https://{{ $domains.IP }}:{{ .Port }}/" target="_blank">https://{{ $domains.IP }}:{{ .Port }}/</a></td>
+            <td><a href="https://{{ .Name }}.{{ $domains.Name }}/" target="_blank">https://{{ .Name }}.{{ $domains.Name }}/</a></td>
+            <td>
+              <button type="button" class="btn btn-primary">Edit</button>
+              <button type="button" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        {{ end }}
       </tbody>
     </table>
   </div>

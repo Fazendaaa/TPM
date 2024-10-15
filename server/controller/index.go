@@ -12,8 +12,8 @@ func index(c *gin.Context) {
 		http.StatusOK,
 		"views/index.html",
 		gin.H{
-			"title":   "TPM",
-			"domains": Domains.SubdomainTest,
+			"title":      "TPM",
+			"subdomains": Domains.SubdomainTest,
 		},
 	)
 }
