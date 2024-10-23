@@ -56,6 +56,7 @@ docker-compose up --build
 - Manage multiple domains -- currently the system supports only one but you can always deploy a dashboard to each one to "make it work"
 - Add PiHole's API support to avoid using files -- this is a troublesome quest due to [lack of documentation](https://discourse.pi-hole.net/t/how-to-use-the-api/61004/9)
 - Also add [Traefik's API](https://doc.traefik.io/traefik/operations/api/) support
+- Add K8's API and docker-compose's Labels support
 - Add auto renew certificates
 - Let's Encrypt support
 - Improve support to handle different DNS Server providers
